@@ -1,0 +1,16 @@
+@use '../themes/variables' as *;
+@forward '../base/_variables.scss';
+
+html {
+    font-size: var(--font-size-base);
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--color-primary);
+    height: 100vh;
+    width: 100%;
+
+}

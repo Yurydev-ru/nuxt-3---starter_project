@@ -1,0 +1,37 @@
+$default-colors: (
+    primary-hover: #0056b3,
+    secondary: #6c757d,
+    secondary-hover: #5a6268,
+    success: #28a745,
+    success-hover: #218838,
+    info: #17a2b8,
+    info-hover: #138496,
+    warning: #ffc107,
+    warning-hover: #d39e00,
+    input-border: #d1d5db,
+    input-border-hover: #3f4750,
+    input-border-focus: #007bff,
+    input-bg: #ffffff,
+    input-bg-hover: #f8f9fa,
+    input-bg-focus: #ffffff,
+    text: #111827,
+);
+
+$breakpoints: (
+    tablet: 768px,
+    desktop: 1024px,
+);
+
+:root {
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.25rem;
+    --padding-sm: 0.5rem;
+    --padding-md: 1rem;
+    --padding-lg: 1.5rem;
+    --border-radius: 0.25rem;
+
+    @each $name, $value in $default-colors {
+        --color-#{$name}: #{$value};
+    }
+}

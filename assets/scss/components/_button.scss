@@ -1,0 +1,20 @@
+@use '../base/variables' as *;
+
+.ui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-md);
+    padding: var(--padding-sm);
+    cursor: pointer;
+
+    &--primary {
+        background:
+            theme-color('bg-primary');
+        color:
+            theme-color('color-primary');
+    }
+
+}
