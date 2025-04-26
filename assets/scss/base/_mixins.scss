@@ -3,3 +3,31 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin media-up($breakpoints) {
+
+    @if $breakpoints ==tablet {
+        @media (min-width: $tablet) {
+            @content;
+        }
+    }
+
+    @else if $breakpoints ==desktop {
+        @media (min-width: $desktop) {
+            @content;
+        }
+    }
+}
