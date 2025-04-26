@@ -1,29 +1,33 @@
-// @ts-check
-import withNuxt from './.nuxt/eslint.config.mjs'
-import vue from 'eslint-plugin-vue';
-import ts from '@typescript-eslint/eslint-plugin';
-// import markdown from 'eslint-plugin-markdown';
-export default withNuxt ({
-    ignores: [
-      'node_modules',
-        'dist',
-         '.nuxt',
-         'package'
-        ],
-    languageOptions: {
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
+import js from '@eslint/js'
+import tseslint from 'typescript-eslint';
+import tsParser from '@typescript-eslint/parser';
+
+
+export default ({
+    files: ['**/*.ts', '**/*.js'],
+    plugins: {
+        js,
+        ts: tseslint,
+        tsParser,
     },
-      linterOptions: {
-        reportUnusedDisableDirectives: true,
-      },
-      rules: {
-        'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { avoidEscape: true }],
-      'indent': ['error', 2],
-      'no-console': ['warn'],
-      'no-debugger': ['error'],
-      },
+    languageOptions: {
+        parser: {
+            js: js.parser,
+            ts: tseslint.parser,
+            tsParser: tsParser,
+        },
+        parserOptions: {
+            ts: {
+                project: './tsconfig.json',
+                tsconfigRootDir: __dirname,
+                sourceType: 'module',
+            },
+        },
+
+    },
+
+  features: {
+    tooling: true,
+    stylistic: true,
+  },
 })

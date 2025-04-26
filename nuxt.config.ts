@@ -1,10 +1,26 @@
-import { defineNuxtConfig } from 'nuxt/config'
+import { defineNuxtConfig } from 'nuxt/config';
+
 
 export default defineNuxtConfig({
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+
+      ],
+    },
+  },
   ssr: true,
-  compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
-  modules:['@nuxtjs/color-mode', '@nuxt/eslint'],
+  modules:[
+    '@nuxt/content',
+    '@nuxtjs/color-mode',
+    '@nuxt/eslint',
+    '@vueuse/nuxt',
+    '@nuxtjs/mdc',
+  ],
+
   components: [
     {
       path: '~/components',
@@ -16,13 +32,16 @@ export default defineNuxtConfig({
     classSuffix: '',
     preference: 'system',
     fallback: 'light',
+    storageKey: 'fd-color-mode'
   },
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use '@/assets/scss/themes' as *;
-          @use '@/assets/scss/base/index' as *;`
+          additionalData: `
+          @use 'assets/scss/themes' as *;
+          @use 'assets/scss/base/index' as *;
+          `,
         },
       },
     },
@@ -40,19 +59,18 @@ export default defineNuxtConfig({
       cssMinify: 'esbuild',
     }
   },
-  typescript: {
-    strict: true,
-    typeCheck: true,
-    tsConfig: {
-      compilerOptions: {
-        moduleResolution: 'bundler',
-      }
-    }
-  },
+
   future: {
     compatibilityVersion: 4,
   },
   features: {
     inlineStyles: false,
-  }
-})
+  },
+  compatibilityDate: '2024-11-01',
+  devtools: {
+    enabled: true,
+    timeline: {
+      enabled: true,
+    }
+  },
+});
