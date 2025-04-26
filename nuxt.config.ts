@@ -1,8 +1,10 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
+  ssr: true,
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules:['@nuxtjs/color-mode'],
+  modules:['@nuxtjs/color-mode', '@nuxt/eslint'],
   components: [
     {
       path: '~/components',
@@ -26,7 +28,11 @@ export default defineNuxtConfig({
     },
     server: {
       hmr: {
-        overlay: false
+        overlay: false,
+        protocol: 'ws',
+        host: 'localhost',
+        port: 3000,
+        clientPort: 3000
       },
     },
     build: {
