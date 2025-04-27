@@ -72,4 +72,18 @@ yarn preview
 bun run preview
 ```
 
+
+## Customize configuration
+
+
+<!-- # Updating all dependencies -->
+
+````
+    npx nuxi@latest upgrade --dedupe`
+
+```bash
+
+> This command will update all dependencies to their latest versions and remove any duplicate packages.
+
+
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

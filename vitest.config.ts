@@ -12,6 +12,10 @@ export default defineConfig({
     },
   },
   test: {
-    coverage: { reporter: ['text', 'lcov'], exclude: ['node_modules/'] },
+    include: ['**/__tests__/*.{test,spec}.{js,ts}'],
+    exclude: ['node_modules/', 'dist/'],
+    coverage: {
+      reporter: ['text', 'lcov'],
+      },
   },
 })
