@@ -59,6 +59,11 @@ export default defineNuxtConfig({
       cssMinify: 'esbuild',
     }
   },
+  typescript: {
+    shim: false,
+    strict: true,
+  },
+
 
   future: {
     compatibilityVersion: 4,

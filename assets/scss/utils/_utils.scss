@@ -1,0 +1,11 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+._container {
+    max-width: 90%;
+    margin: 0 auto;
+
+    @include media-up(tablet) {
+        max-width: 540px;
+    }
+}

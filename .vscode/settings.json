@@ -1,5 +1,8 @@
 {
     "editor.formatOnSave": false,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.tabSize": 2,
     "editor.codeActionsOnSave":
     {
         "source.fixAll.eslint": "explicit"

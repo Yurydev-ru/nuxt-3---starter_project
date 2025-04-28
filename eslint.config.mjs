@@ -1,58 +1,71 @@
 import js from '@eslint/js';
-import eslintPlugin from 'eslint-plugin-flat';
-import pluginVue from 'eslint-plugin-vue';
-import tseslint from 'typescript-eslint';
+import vue from 'eslint-plugin-vue';
+import vueParser from 'vue-eslint-parser';
+import ts from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import { defineConfig } from 'eslint/config';
+import stylistic from '@stylistic/eslint-plugin';
+import markdown from 'eslint-plugin-markdown';
+import { defineConfig} from 'eslint/config';
 
 export default defineConfig([
+
     {
-        files: ['**/*.js'],
+        ignores: [
+            "**/node_modules",
+            ".output",
+            ".nuxt",
+            ".git",
+            "public",
+            "dist",
+            "coverage",
+            "build",
+            "out",
+            "lib",
+            "es",
+            "cjs",
+            ".turbo",
+            ".vercel",
+            ".output/public",
+            "*.config.js"
+          ],
     },
-]);
-
-// export default tseslint.config(
-//     ignores: [
-//         '**/node_modules/**',
-//         '**/dist/**',
-//         '**/build/**',
-//         '**/coverage/**',
-//         '**/out/**',
-//         '**/lib/**',
-//         '**/es/**',
-//         '**/cjs/**',
-//         '**/esm/**',
-//         '**/test/**',
-//         '**/tests/**',
-//         '**/__tests__/**'
-//     ],
-//     eslint.configs.recommended,
-//     tseslint.configs.recommendedTypeChecked,
-//     eslintPlugin.configs['flat/recommended'],
-//     // files: ['**/*.ts', '**/*.js'],
-//     // plugins: {
-//     //     js,
-//     //     ts: tseslint,
-//     //     tsParser,
-//     // },
-//     languageOptions: {
-//         parser: {
-//             js: js.parser,
-//             ts: tseslint.parser,
-//             tsParser: tsParser,
-//         },
-//         parserOptions: {
-//             ts: {
-//                 project: './tsconfig.json',
-//                 tsconfigRootDir: __dirname,
-//                 sourceType: 'module',
-//             },
-//         },
-
-//     },
-
-//   features: {
-//     tooling: true,
-//     stylistic: true,
-//   },
-// )
+    {
+        files: ['**/*.ts', '**/*.vue', '**/*.js', '**/*.mjs'],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: "module",
+            parser: vueParser,
+            parserOptions: {
+                parser: {
+                    ts: tsParser,
+                    js: tsParser,
+                    '<template>': 'espree'
+                },
+                project: ['./tsconfig.json'],
+                extraFileExtensions: ['.vue'],
+            },
+            globals: {
+                useRouter: 'readonly',
+                useAsyncData: 'readonly',
+                definePageMeta: 'readonly',
+                useHead: 'readonly',
+                ref: 'readonly',
+                computed: 'readonly',
+                defineNuxtConfig: 'readonly'
+            },
+        },
+        plugins: {
+            js,
+            vue,
+            ts,
+            stylistic,
+            markdown,
+        },
+        extends: ["js/recommended"],
+        rules: {
+           "no-unused-vars": "off",
+            "vue/no-setup-props-destructure": "off",
+            "vue/no-v-html": "warn",
+        }
+    }
+])

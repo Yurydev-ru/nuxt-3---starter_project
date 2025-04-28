@@ -4,7 +4,7 @@
 
 <template>
     <header class="app-header">
-        <div class="container">
+        <div class="_container">
             <p>HEADER</p>
             <ThemeSwitcher />
         </div>
@@ -19,7 +19,5 @@
     padding: var(--padding-md);
 }
 
-.container {
-    @include flex-between;
-}
+
 </style>
