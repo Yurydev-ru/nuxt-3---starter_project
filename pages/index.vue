@@ -1,22 +1,4 @@
 <script lang="ts" setup>
-interface HomeData {
-  title: string
-  description: string
-}
-
-const { data: home } = await useAsyncData<HomeData>(async () => {
-  const result = await queryCollection('content').path('/').first()
-  if (!result) {
-    throw new Error('No data found')
-  }
-  return result as HomeData
-})
-
-useSeoMeta({
-  title: 'home.value?.title',
-  description: 'home.value?.description'
-});
-
 definePageMeta({
   layout: 'default',
 })
