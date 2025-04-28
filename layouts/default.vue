@@ -22,6 +22,7 @@
 }
 
 .app-main {
+    background: green;
     padding: 50px 0;
     flex: 1;
     overflow-y: auto;

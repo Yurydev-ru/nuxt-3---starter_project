@@ -4,12 +4,16 @@
 
 <template>
     <footer class="app-footer">
-        <p>HEADER</p>
+        <div class="_container">
+            <p>FOOTER</p>
+
+        </div>
     </footer>
 </template>
 
 <style lang="scss" scoped>
 .app-footer {
     background: red;
+    height: 80px;
 }
 </style>

@@ -3,6 +3,7 @@
 .data
 .nuxt
 .nitro
+.vite
 .cache
 dist
 
@@ -21,4 +22,4 @@ logs
 # Local env files
 .env
 .env.*
-!.env.example
+
