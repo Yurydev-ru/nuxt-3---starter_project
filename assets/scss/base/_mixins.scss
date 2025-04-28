@@ -1,3 +1,5 @@
+@forward './variables';
+
 @mixin flex-between {
     display: flex;
     justify-content: space-between;
@@ -19,15 +21,16 @@
 
 @mixin media-up($breakpoints) {
 
-    @if $breakpoints ==tablet {
+    @if $breakpoints == tablet {
         @media (min-width: $tablet) {
             @content;
         }
     }
 
-    @else if $breakpoints ==desktop {
+    @else if $breakpoints == desktop {
         @media (min-width: $desktop) {
             @content;
         }
     }
 }
+

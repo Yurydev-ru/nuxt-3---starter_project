@@ -1,4 +1,3 @@
-@use 'assets/scss/base/index' as *;
-@use 'assets/scss/themes/index' as *;
+@use 'base' as *;
 @use 'components';
-@use 'assets/scss/utils/index' as *;
+@use 'themes';

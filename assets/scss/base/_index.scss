@@ -1,5 +1,6 @@
+@use 'assets/scss/base/mixins' as *;
+@use 'variables';
 @forward 'mixins';
-@forward 'variables';
 @forward 'resets';
 @forward 'globals';
 @forward 'functions';

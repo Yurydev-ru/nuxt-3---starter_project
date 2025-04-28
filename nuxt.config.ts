@@ -1,25 +1,23 @@
 import { defineNuxtConfig } from 'nuxt/config';
 
+const isDev = import.meta.env.MODE === 'development';
 
 export default defineNuxtConfig({
-
   nitro: {
     prerender: {
-      crawlLinks: true,
+      crawlLinks: !isDev,
       routes: [
         '/',
-
       ],
     },
   },
-  ssr: true,
   modules:[
     '@nuxt/content',
     '@nuxtjs/color-mode',
-    '@nuxt/eslint',
+    isDev && '@nuxt/eslint',
     '@vueuse/nuxt',
     '@nuxtjs/mdc',
-  ],
+  ].filter(Boolean),
 
   components: [
     {
@@ -35,13 +33,12 @@ export default defineNuxtConfig({
     storageKey: 'fd-color-mode'
   },
   vite: {
+    cacheDir: isDev ? './node_modules/.vite' : './.vite',
     css: {
+      devSourcemap: false,
       preprocessorOptions: {
         scss: {
-          additionalData: `
-          @use 'assets/scss/themes' as *;
-          @use 'assets/scss/base/index' as *;
-          `,
+          additionalData: isDev ? `@use 'assets/scss/dev-import' as *;` : ''
         },
       },
     },
@@ -50,13 +47,14 @@ export default defineNuxtConfig({
         overlay: false,
         protocol: 'ws',
         host: 'localhost',
-        port: 3000,
+        port: 24678,
         clientPort: 3000
       },
     },
     build: {
-      minify: 'esbuild',
-      cssMinify: 'esbuild',
+      minify: isDev ? false : 'terser',
+      cssMinify: 'lightningcss',
+      chunkSizeWarningLimit: 2000,
     }
   },
   typescript: {
@@ -73,9 +71,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   devtools: {
-    enabled: true,
-    timeline: {
-      enabled: true,
-    }
+    enabled: isDev,
   },
 });

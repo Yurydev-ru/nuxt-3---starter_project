@@ -1,14 +1,16 @@
 <script lang="ts" setup>
+import { useColorMode } from '@vueuse/core';
+
 const colorMode = useColorMode();
 
-const toggleTheme = () => {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
-};
+function toggleTheme() {
+    colorMode.value = colorMode.value === 'dark' ? 'light' : 'dark';
+}
 </script>
 
 <template>
     <button class="ui-button button-theme" @click="toggleTheme">
-        {{ colorMode.value === 'dark' ? '🌙' : '☀️' }}
+        {{ $colorMode.value === 'dark' ? '🌙' : '☀️' }}
     </button>
 </template>
 

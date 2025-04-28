@@ -14,10 +14,12 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.5.1",
+    "@nuxt/vite-builder": "https://pkg.pr.new/@nuxt/vite-builder@31088",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/mdc": "^0.17.0",
+    "@vueuse/core": "^13.1.0",
     "@vueuse/nuxt": "^13.1.0",
-    "nuxt": "^3.16.2",
+    "nuxt": "^3.17.0",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-vue": "^10.0.0",
     "jsdom": "^26.1.0",
+    "lightningcss": "^1.29.3",
     "postcss-scss": "^4.0.9",
     "sass": "^1.87.0",
     "typescript": "^5.8.3",
